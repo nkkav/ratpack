@@ -1,7 +1,8 @@
 GHDL=ghdl
 GHDLFLAGS=--ieee=synopsys -fexplicit --workdir=work
-# Use stop-time = 2340ns for computing Farey series' F1 to F12.
-GHDLRUNFLAGS=--stop-time=2340ns
+# Use stop-time = 2350ns for computing Farey series' F1 to F12.
+# Simulation will run up to this limit and end by the forced assert.
+GHDLRUNFLAGS=--stop-time=2350ns
 
 # Default target : elaborate
 all : run

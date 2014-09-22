@@ -13,9 +13,19 @@
 +-------------------+----------------------------------------------------------+
 | **Release Date**  | 22 September 2014                                        |
 +-------------------+----------------------------------------------------------+
-| **Version**       | 0.3.0                                                    |
+| **Version**       | 0.3.1                                                    |
 +-------------------+----------------------------------------------------------+
 | **Rev. history**  |                                                          |
++-------------------+----------------------------------------------------------+
+|        **v0.3.1** | 2014-09-22                                               |
+|                   |                                                          |
+|                   | New features and changes:                                |
+|                   |                                                          |
+|                   | - Testing of max, rmin (min), rmax (max).                |
+|                   | - Automatic end of simulation (via forced assert).       |
+|                   | - Renamed run.sh to ghdl.sh.                             |
+|                   | - Added mti.sh and ratpack_tb1/tb2.do for Modelsim.      |
+|                   | - README update.                                         |
 +-------------------+----------------------------------------------------------+
 |        **v0.3.0** | 2014-09-22                                               |
 |                   |                                                          |
@@ -157,18 +167,35 @@ The ``ratpack`` distribution includes the following files:
 +-----------------------+------------------------------------------------------+
 | /sim/rtl_sim/run      | RTL simulation run scripts directory                 |
 +-----------------------+------------------------------------------------------+
+| ghdl.sh               | A bash script for running the GNU Makefile for GHDL. |
++-----------------------+------------------------------------------------------+
+| mti.sh                | A bash script for running the Mentor Modelsim        |
+|                       | simulation for either testbench.                     |
++-----------------------+------------------------------------------------------+
 | ratpack.mk            | GNU Makefile for running GHDL simulations.           |
 +-----------------------+------------------------------------------------------+
-| run.sh                | A bash script for running the GNU Makefile for GHDL. |
+| ratpack_tb1.do        | Modelsim ``.do`` script for running the simulation   |
+|                       | for testbench ``ratpack_tb1.vhd``.                   |
++-----------------------+------------------------------------------------------+
+| ratpack_tb2.do        | Modelsim ``.do`` script for running the simulation   |
+|                       | for testbench ``ratpack_tb2.vhd``.                   |
 +-----------------------+------------------------------------------------------+
 
 
 3. ``ratpack`` usage
 ====================
 
-The ``ratpack`` package test script can be used as follows:
+Contents of the ``ratpack`` distribution can be simulated using either GHDL or 
+Mentor Modelsim using the provided scripts.
 
-| ``$./run.sh <package name> <test case>``
+3.1. GHDL
+---------
+
+The ``ratpack`` package test script for GHDL can be used as follows:
+
+| ``$./ghdl.sh <package/entity name> <test case>``
+
+from within directory ``ratpack/sim/rtl_sim/run``.
 
 After this process, the ``ratpack_results.txt`` file is generated containing 
 simulation results.
@@ -177,11 +204,36 @@ Here follow some simple usage examples of this bash script.
 
 1. Compile the ``ratpack`` package and do a simple test.
 
-| ``$ ./run.sh ratpack 1``
+| ``$ cd sim/rtl_sim/run``
+| ``$ ./ghdl.sh ratpack 1``
 
 2. Compile the ``ratpack`` package and generate the Farey series.
 
-| ``$ ./run.sh ratpack 2``
+| ``$ ./ghdl.sh ratpack 2``
+
+3.2 Modelsim
+------------
+
+For running the Modelsim simulation, the ``ratpack`` package test script for 
+can be used as follows:
+
+| ``$./mti.sh <package/entity name> <test case>``
+
+from within directory ``ratpack/sim/rtl_sim/run``.
+
+1. Compile the ``ratpack`` package and do a simple test.
+
+| ``$ cd sim/rtl_sim/run``
+| ``$ ./mti.sh ratpack 1``
+
+As in the GHDL case, a diagnostic text file is produced. The results are copied 
+to ``sim/rtl_sim/out/ratpack_results1.txt``
+
+2. Compile the ``ratpack`` package and generate the Farey series.
+
+| ``$ ./mti.sh ratpack 2``
+
+The results are copied to ``sim/rtl_sim/out/ratpack_results2.txt``
 
 
 4. Prerequisites
@@ -195,3 +247,5 @@ Here follow some simple usage examples of this bash script.
 - GHDL simulator (http://ghdl.free.fr)
 
   Provides the "ghdl" executable and corresponding simulation environment.
+
+- Alternatively to GHDL, the Mentor Modelsim simulator (http://www.mentor.com).

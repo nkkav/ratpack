@@ -3,9 +3,11 @@
 -- Purpose : A testbench for "ratpack" generating the Farey series' up to order 
 --           12.
 -- Author  : Nikolaos Kavvadias <nikolaos.kavvadias@gmail.com>
--- Date    : 14-May-2010
--- Version : 0.0.0
--- Revision: 0.0.0 (2010/05/14)
+-- Date    : 22-Sep-2014
+-- Version : 0.1.0
+-- Revision: 0.1.0 (2014/09/22)
+--           Added automatic end of simulation (via forced assert).
+--           0.0.0 (2010/05/14)
 --           Initial version.
 -- License : Copyright (C) 2010, 2011, 2012, 2013, 2014 by Nikolaos Kavvadias 
 --           This program is free software. You can redistribute it and/or 
@@ -85,6 +87,10 @@ begin
       writeline(ResultsFile, Bufline);
     end loop;
     wait for CLK_PERIOD;
+    -- Automatic end of the current simulation.
+    assert false
+      report "NONE. End simulation time reached"
+      severity failure;     
   end process FAREY_SERIES;
   
 end tb_arch;

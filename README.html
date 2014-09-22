@@ -363,10 +363,22 @@ ul.auto-toc {
 <td>22 September 2014</td>
 </tr>
 <tr><td><strong>Version</strong></td>
-<td>0.3.0</td>
+<td>0.3.1</td>
 </tr>
 <tr><td><strong>Rev. history</strong></td>
 <td>&nbsp;</td>
+</tr>
+<tr><td><strong>v0.3.1</strong></td>
+<td><p class="first">2014-09-22</p>
+<p>New features and changes:</p>
+<ul class="last simple">
+<li>Testing of max, rmin (min), rmax (max).</li>
+<li>Automatic end of simulation (via forced assert).</li>
+<li>Renamed run.sh to ghdl.sh.</li>
+<li>Added mti.sh and ratpack_tb1/tb2.do for Modelsim.</li>
+<li>README update.</li>
+</ul>
+</td>
 </tr>
 <tr><td><strong>v0.3.0</strong></td>
 <td><p class="first">2014-09-22</p>
@@ -525,21 +537,38 @@ eventually.</td>
 <tr><td>/sim/rtl_sim/run</td>
 <td>RTL simulation run scripts directory</td>
 </tr>
+<tr><td>ghdl.sh</td>
+<td>A bash script for running the GNU Makefile for GHDL.</td>
+</tr>
+<tr><td>mti.sh</td>
+<td>A bash script for running the Mentor Modelsim
+simulation for either testbench.</td>
+</tr>
 <tr><td>ratpack.mk</td>
 <td>GNU Makefile for running GHDL simulations.</td>
 </tr>
-<tr><td>run.sh</td>
-<td>A bash script for running the GNU Makefile for GHDL.</td>
+<tr><td>ratpack_tb1.do</td>
+<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
+for testbench <tt class="docutils literal">ratpack_tb1.vhd</tt>.</td>
+</tr>
+<tr><td>ratpack_tb2.do</td>
+<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
+for testbench <tt class="docutils literal">ratpack_tb2.vhd</tt>.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="ratpack-usage">
 <h1>3. <tt class="docutils literal">ratpack</tt> usage</h1>
-<p>The <tt class="docutils literal">ratpack</tt> package test script can be used as follows:</p>
+<p>Contents of the <tt class="docutils literal">ratpack</tt> distribution can be simulated using either GHDL or
+Mentor Modelsim using the provided scripts.</p>
+<div class="section" id="ghdl">
+<h2>3.1. GHDL</h2>
+<p>The <tt class="docutils literal">ratpack</tt> package test script for GHDL can be used as follows:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">$./run.sh</span> &lt;package name&gt; &lt;test case&gt;</tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$./ghdl.sh</span> &lt;package/entity name&gt; &lt;test case&gt;</tt></div>
 </div>
+<p>from within directory <tt class="docutils literal">ratpack/sim/rtl_sim/run</tt>.</p>
 <p>After this process, the <tt class="docutils literal">ratpack_results.txt</tt> file is generated containing
 simulation results.</p>
 <p>Here follow some simple usage examples of this bash script.</p>
@@ -547,13 +576,40 @@ simulation results.</p>
 <li>Compile the <tt class="docutils literal">ratpack</tt> package and do a simple test.</li>
 </ol>
 <div class="line-block">
-<div class="line"><tt class="docutils literal">$ ./run.sh ratpack 1</tt></div>
+<div class="line"><tt class="docutils literal">$ cd sim/rtl_sim/run</tt></div>
+<div class="line"><tt class="docutils literal">$ ./ghdl.sh ratpack 1</tt></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>Compile the <tt class="docutils literal">ratpack</tt> package and generate the Farey series.</li>
 </ol>
 <div class="line-block">
-<div class="line"><tt class="docutils literal">$ ./run.sh ratpack 2</tt></div>
+<div class="line"><tt class="docutils literal">$ ./ghdl.sh ratpack 2</tt></div>
+</div>
+</div>
+<div class="section" id="modelsim">
+<h2>3.2 Modelsim</h2>
+<p>For running the Modelsim simulation, the <tt class="docutils literal">ratpack</tt> package test script for
+can be used as follows:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$./mti.sh</span> &lt;package/entity name&gt; &lt;test case&gt;</tt></div>
+</div>
+<p>from within directory <tt class="docutils literal">ratpack/sim/rtl_sim/run</tt>.</p>
+<ol class="arabic simple">
+<li>Compile the <tt class="docutils literal">ratpack</tt> package and do a simple test.</li>
+</ol>
+<div class="line-block">
+<div class="line"><tt class="docutils literal">$ cd sim/rtl_sim/run</tt></div>
+<div class="line"><tt class="docutils literal">$ ./mti.sh ratpack 1</tt></div>
+</div>
+<p>As in the GHDL case, a diagnostic text file is produced. The results are copied
+to <tt class="docutils literal">sim/rtl_sim/out/ratpack_results1.txt</tt></p>
+<ol class="arabic simple" start="2">
+<li>Compile the <tt class="docutils literal">ratpack</tt> package and generate the Farey series.</li>
+</ol>
+<div class="line-block">
+<div class="line"><tt class="docutils literal">$ ./mti.sh ratpack 2</tt></div>
+</div>
+<p>The results are copied to <tt class="docutils literal">sim/rtl_sim/out/ratpack_results2.txt</tt></p>
 </div>
 </div>
 <div class="section" id="prerequisites">
@@ -567,6 +623,8 @@ simulation results.</p>
 </li>
 <li><p class="first">GHDL simulator (<a class="reference external" href="http://ghdl.free.fr">http://ghdl.free.fr</a>)</p>
 <p>Provides the &quot;ghdl&quot; executable and corresponding simulation environment.</p>
+</li>
+<li><p class="first">Alternatively to GHDL, the Mentor Modelsim simulator (<a class="reference external" href="http://www.mentor.com">http://www.mentor.com</a>).</p>
 </li>
 </ul>
 </div>

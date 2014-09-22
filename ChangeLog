@@ -1,6 +1,15 @@
 ChangeLog starts here
 
 2014-09-22  Nikolaos Kavvadias  <nikolaos.kavvadias@gmail.com>
+  
+  * Release 0.3.1; new features and changes.
+  * Testing of max, rmin (min), rmax (max).
+  * Automatic end of simulation (via forced assert).
+  * Renamed run.sh to ghdl.sh.
+  * Added mti.sh and ratpack_tb1/tb2.do for Modelsim.
+  * README update.  
+
+2014-09-22  Nikolaos Kavvadias  <nikolaos.kavvadias@gmail.com>
 
   * Release 0.3.0; updated for github.
 

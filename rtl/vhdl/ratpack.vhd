@@ -2,9 +2,11 @@
 -- Filename: ratpack.vhd
 -- Purpose : Rational arithmetic package
 -- Author  : Nikolaos Kavvadias <nikolaos.kavvadias@gmail.com>
--- Date    : 21-Feb-2014
--- Version : 0.1.0
--- Revision: 0.1.0 (2014/02/21)
+-- Date    : 22-Sep-2014
+-- Version : 0.1.1
+-- Revision: 0.1.1 (2014/09/22)
+--           Renamed max to rmax and min to rmin.
+--           0.1.0 (2014/02/21)
 --           Upgraded to version 0.1.0.
 --           0.0.3 (2012/02/11)
 --           Added max, min.
@@ -28,6 +30,12 @@
 --
 --------------------------------------------------------------------------------
 
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
+use IEEE.numeric_bit.all;
+
 package ratpack is 
 
   -- A rational number is defined by the pair (numerator, denominator) where 
@@ -48,8 +56,8 @@ package ratpack is
   function "*" (a, b : rational) return rational;
   function "/" (a, b : rational) return rational;
   function "abs" (a : rational)  return rational;
-  function max (a, b : rational) return rational;
-  function min (a, b : rational) return rational;
+  function rmax (a, b : rational) return rational;
+  function rmin (a, b : rational) return rational;
   function ">" (a, b : rational) return boolean;
   function "<" (a, b : rational) return boolean;
   function ">=" (a, b : rational) return boolean;
@@ -175,7 +183,7 @@ package body ratpack is
     return r;
   end "abs";
   
-  function max (a, b : rational) return rational is
+  function rmax (a, b : rational) return rational is
     variable w, x, y, z : integer;
     variable t1, t2 : integer;
     variable maxv : rational;
@@ -192,9 +200,11 @@ package body ratpack is
       maxv := b;
     end if; 
     return maxv;
-  end max;
+  end rmax;
   
-  function min (a, b : rational) return rational is
+  -- NOTE: Using rmin instead of min due to LRM visibility rules:
+  -- https://groups.google.com/forum/#!topic/comp.lang.vhdl/UP6vpurLLE4
+  function rmin (a, b : rational) return rational is
     variable w, x, y, z : integer;
     variable t1, t2 : integer;
     variable minv : rational;
@@ -211,7 +221,7 @@ package body ratpack is
       minv := b;
     end if; 
     return minv;
-  end min;  
+  end rmin;  
   
   function ">" (a, b : rational) return boolean is
     variable diff : rational := a - b;
