@@ -11,11 +11,15 @@
 +-------------------+----------------------------------------------------------+
 | **Website**       | http://www.nkavvadias.com                                |
 +-------------------+----------------------------------------------------------+
-| **Release Date**  | 22 September 2014                                        |
+| **Release Date**  | 14 October 2014                                          |
 +-------------------+----------------------------------------------------------+
-| **Version**       | 0.3.1                                                    |
+| **Version**       | 0.3.2                                                    |
 +-------------------+----------------------------------------------------------+
 | **Rev. history**  |                                                          |
++-------------------+----------------------------------------------------------+
+|        **v0.3.2** | 2014-10-14                                               |
+|                   |                                                          |
+|                   | Replaced COPYING by LICENSE.                             |
 +-------------------+----------------------------------------------------------+
 |        **v0.3.1** | 2014-09-22                                               |
 |                   |                                                          |
@@ -127,9 +131,7 @@ The ``ratpack`` distribution includes the following files:
 +-----------------------+------------------------------------------------------+
 | ChangeLog             | A log for code changes.                              |
 +-----------------------+------------------------------------------------------+
-| COPYING               | The LGPL, version 3, governs ``ratpack``. There are  |
-|                       | thoughts of changing the license to Modified BSD     |
-|                       | eventually.                                          |
+| LICENSE               | The modified BSD license governs ``ratpack``.        |
 +-----------------------+------------------------------------------------------+
 | README.rst            | This file.                                           |
 +-----------------------+------------------------------------------------------+
@@ -239,7 +241,7 @@ The results are copied to ``sim/rtl_sim/out/ratpack_results2.txt``
 4. Prerequisites
 ================
 
-- Standard UNIX-based tools (tested on cygwin/x86)
+- Standard UNIX-based tools (tested on cygwin/x86 and MinGW/x64)
 
   * make
   * bash
