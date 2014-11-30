@@ -2,6 +2,10 @@
  ratpack user manual
 =====================
 
+.. image:: ratpack.png
+   :scale: 25 %
+   :align: center 
+
 +-------------------+----------------------------------------------------------+
 | **Title**         | ratpack (VHDL rational arithmetic package).              |
 +-------------------+----------------------------------------------------------+
@@ -11,11 +15,15 @@
 +-------------------+----------------------------------------------------------+
 | **Website**       | http://www.nkavvadias.com                                |
 +-------------------+----------------------------------------------------------+
-| **Release Date**  | 14 October 2014                                          |
+| **Release Date**  | 29 November 2014                                         |
 +-------------------+----------------------------------------------------------+
-| **Version**       | 0.3.2                                                    |
+| **Version**       | 0.3.3                                                    |
 +-------------------+----------------------------------------------------------+
 | **Rev. history**  |                                                          |
++-------------------+----------------------------------------------------------+
+|        **v0.3.3** | 2014-11-29                                               |
+|                   |                                                          |
+|                   | Added project logo in README.                            |
 +-------------------+----------------------------------------------------------+
 |        **v0.3.2** | 2014-10-14                                               |
 |                   |                                                          |
@@ -139,6 +147,8 @@ The ``ratpack`` distribution includes the following files:
 +-----------------------+------------------------------------------------------+
 | README.pdf            | PDF version of README.                               |
 +-----------------------+------------------------------------------------------+
+| ratpack.png           | PNG image for the ``ratpack`` project logo.          |
++-----------------------+------------------------------------------------------+
 | rst2docs.sh           | Bash script for generating the HTML and PDF versions.|
 +-----------------------+------------------------------------------------------+
 | THANKS                | Acknowledgements.                                    |
@@ -250,4 +260,4 @@ The results are copied to ``sim/rtl_sim/out/ratpack_results2.txt``
 
   Provides the "ghdl" executable and corresponding simulation environment.
 
-- Alternatively to GHDL, the Mentor Modelsim simulator (http://www.mentor.com).
+- Alternatively to GHDL, the Mentor Modelsim simulator (http://www.mentor.com)
