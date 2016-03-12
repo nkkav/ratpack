@@ -1,5 +1,12 @@
 ChangeLog starts here
 
+2016-03-12  Nikolaos Kavvadias  <nikolaos.kavvadias@gmail.com>
+  * Release 0.3.4; update dates and Changelog.
+
+2014-11-29  Nikolaos Kavvadias  <nikolaos.kavvadias@gmail.com>
+
+  * Release 0.3.3; added project logo.
+
 2014-10-14  Nikolaos Kavvadias  <nikolaos.kavvadias@gmail.com>
   
   * Release 0.3.2; changed COPYING (LGPLv3) to LICENSE (modifed BSD).
