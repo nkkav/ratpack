@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
 <title>ratpack user manual</title>
 <style type="text/css">
 
@@ -362,13 +362,18 @@ ul.auto-toc {
 <td><a class="reference external" href="http://www.nkavvadias.com">http://www.nkavvadias.com</a></td>
 </tr>
 <tr><td><strong>Release Date</strong></td>
-<td>12 March 2016</td>
+<td>23 July 2016</td>
 </tr>
 <tr><td><strong>Version</strong></td>
-<td>0.3.4</td>
+<td>0.3.5</td>
 </tr>
 <tr><td><strong>Rev. history</strong></td>
 <td>&nbsp;</td>
+</tr>
+<tr><td><strong>v0.3.5</strong></td>
+<td><p class="first">2016-23-07</p>
+<p class="last">Use sim/rtl_sim/bin dir, ignores for git, clean script</p>
+</td>
 </tr>
 <tr><td><strong>v0.3.4</strong></td>
 <td><p class="first">2016-03-12</p>
@@ -540,6 +545,20 @@ Github: <a class="reference external" href="http://github.com/nkkav/ratpack.git"
 <tr><td>/sim/rtl_sim</td>
 <td>RTL simulation files directory</td>
 </tr>
+<tr><td>/sim/rtl_sim/bin</td>
+<td>RTL simulation makefiles directory</td>
+</tr>
+<tr><td>ratpack.mk</td>
+<td>GNU Makefile for running GHDL simulations.</td>
+</tr>
+<tr><td>ratpack_tb1.do</td>
+<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
+for testbench <tt class="docutils literal">ratpack_tb1.vhd</tt>.</td>
+</tr>
+<tr><td>ratpack_tb2.do</td>
+<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
+for testbench <tt class="docutils literal">ratpack_tb2.vhd</tt>.</td>
+</tr>
 <tr><td>/sim/rtl_sim/out</td>
 <td>RTL simulation output files directory</td>
 </tr>
@@ -552,23 +571,15 @@ Github: <a class="reference external" href="http://github.com/nkkav/ratpack.git"
 <tr><td>/sim/rtl_sim/run</td>
 <td>RTL simulation run scripts directory</td>
 </tr>
+<tr><td>clean.sh</td>
+<td>A bash script for cleaning simulation artifacts.</td>
+</tr>
 <tr><td>ghdl.sh</td>
 <td>A bash script for running the GNU Makefile for GHDL.</td>
 </tr>
 <tr><td>mti.sh</td>
 <td>A bash script for running the Mentor Modelsim
 simulation for either testbench.</td>
-</tr>
-<tr><td>ratpack.mk</td>
-<td>GNU Makefile for running GHDL simulations.</td>
-</tr>
-<tr><td>ratpack_tb1.do</td>
-<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
-for testbench <tt class="docutils literal">ratpack_tb1.vhd</tt>.</td>
-</tr>
-<tr><td>ratpack_tb2.do</td>
-<td>Modelsim <tt class="docutils literal">.do</tt> script for running the simulation
-for testbench <tt class="docutils literal">ratpack_tb2.vhd</tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -594,12 +605,18 @@ simulation results.</p>
 <div class="line"><tt class="docutils literal">$ cd sim/rtl_sim/run</tt></div>
 <div class="line"><tt class="docutils literal">$ ./ghdl.sh ratpack 1</tt></div>
 </div>
+<p>The default results for comparison can be found as
+<tt class="docutils literal">sim/rtl_sim/out/ratpack_results1.txt</tt></p>
 <ol class="arabic simple" start="2">
 <li>Compile the <tt class="docutils literal">ratpack</tt> package and generate the Farey series.</li>
 </ol>
 <div class="line-block">
 <div class="line"><tt class="docutils literal">$ ./ghdl.sh ratpack 2</tt></div>
 </div>
+<p>The default results for comparison can be found as
+<tt class="docutils literal">sim/rtl_sim/out/ratpack_results2.txt</tt></p>
+<p>The run script expects that the GHDL simulator is installed and its <tt class="docutils literal">bin</tt>
+directory is in the <tt class="docutils literal">$PATH</tt>.</p>
 </div>
 <div class="section" id="modelsim">
 <h2>3.2 Modelsim</h2>
@@ -616,15 +633,16 @@ can be used as follows:</p>
 <div class="line"><tt class="docutils literal">$ cd sim/rtl_sim/run</tt></div>
 <div class="line"><tt class="docutils literal">$ ./mti.sh ratpack 1</tt></div>
 </div>
-<p>As in the GHDL case, a diagnostic text file is produced. The results are copied
-to <tt class="docutils literal">sim/rtl_sim/out/ratpack_results1.txt</tt></p>
+<p>As in the GHDL case, a diagnostic text file is produced. The default results for
+comparison can be found as <tt class="docutils literal">sim/rtl_sim/out/ratpack_results1.txt</tt></p>
 <ol class="arabic simple" start="2">
 <li>Compile the <tt class="docutils literal">ratpack</tt> package and generate the Farey series.</li>
 </ol>
 <div class="line-block">
 <div class="line"><tt class="docutils literal">$ ./mti.sh ratpack 2</tt></div>
 </div>
-<p>The results are copied to <tt class="docutils literal">sim/rtl_sim/out/ratpack_results2.txt</tt></p>
+<p>The default results for comparison can be found as
+<tt class="docutils literal">sim/rtl_sim/out/ratpack_results2.txt</tt></p>
 </div>
 </div>
 <div class="section" id="prerequisites">

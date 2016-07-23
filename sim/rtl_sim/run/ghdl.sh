@@ -1,8 +1,8 @@
 #!/bin/bash
 
-make -f $1.mk TEST=$2 clean
-make -f $1.mk TEST=$2 init
-make -f $1.mk TEST=$2 run
+make -f ../bin/$1.mk TEST=$2 clean
+make -f ../bin/$1.mk TEST=$2 init
+make -f ../bin/$1.mk TEST=$2 run
 
 if [ "$SECONDS" -eq 1 ]
 then

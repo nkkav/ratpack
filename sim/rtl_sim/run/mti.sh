@@ -41,10 +41,7 @@ vhdlpkgname=$1
 
 ##########################################################################
 # Run Mentor Modelsim simulation.
-vsim -c -do "../run/$1_tb$2.do"
-
-# Copy diagnostic text dump to output directory.
-mv ${1}_results.txt ../out/${1}_results${2}.txt
+vsim -c -do "../bin/$1_tb$2.do"
 ##########################################################################
 
 # Generate statistics.
