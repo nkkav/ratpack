@@ -6,12 +6,10 @@
 -- Version : 0.1.0
 -- Revision: 0.1.0 (2014/02/21)
 --           Initial version.
--- License : Copyright (C) 2014 by Nikolaos Kavvadias
+-- License : Copyright (C) 2014-2020 by Nikolaos Kavvadias
 --           This program is free software. You can redistribute it and/or 
---           modify it under the terms of the GNU Lesser General Public License, 
---           either version 3 of the License, or (at your option) any later 
---           version. See COPYING.
---
+--           modify it under the terms of the Modified BSD license. See
+--           LICENSE.
 --------------------------------------------------------------------------------
 
 library IEEE;

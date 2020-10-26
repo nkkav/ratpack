@@ -9,12 +9,10 @@
 --           Added automatic end of simulation (via forced assert).
 --           0.0.0 (2010/05/14)
 --           Initial version.
--- License : Copyright (C) 2010, 2011, 2012, 2013, 2014 by Nikolaos Kavvadias 
+-- License : Copyright (C) 2010-2020 by Nikolaos Kavvadias
 --           This program is free software. You can redistribute it and/or 
---           modify it under the terms of the GNU Lesser General Public License, 
---           either version 3 of the License, or (at your option) any later 
---           version. See COPYING.
---
+--           modify it under the terms of the Modified BSD license. See
+--           LICENSE.
 --------------------------------------------------------------------------------
 
 library STD;
@@ -31,7 +29,7 @@ architecture tb_arch of ratpack_tb is
   -- Declare results file
   -------------------------------------------------------
   file ResultsFile: text open write_mode is
-  "ratpack_results.txt";
+  "ratpack_results2.txt";
   -------------------------------------------------------
   -- Constant declarations
   -------------------------------------------------------
@@ -43,7 +41,7 @@ begin
   -- rational numbers a/b with 0<=a<=b<=n  and (a,b)=1 arranged in increasing 
   -- order. 
   FAREY_SERIES: process
-    variable a, b, c, d, k, n : integer;
+    variable a, b, c, d, k : integer;
     variable ta, tb, tc, td : integer;
     variable r : rational := RAT_ZERO;
     variable BufLine: line;
@@ -51,7 +49,7 @@ begin
     for n in 1 to 12 loop
       write(Bufline, string'(" F"));
       write(Bufline, n);
-      write(Bufline, string'("= "));
+      write(Bufline, string'(" = "));
       -- Initialize a, b, c, d for computing the ascending Farey sequence
       a := 0;
       b := 1;

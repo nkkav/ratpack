@@ -21,18 +21,14 @@
 --           implementation of the "+", "-", "*", "/" operators on reduced
 --           rational numbers (i.e. relative primes), the gcd(x,y) and the
 --           mediant operator.
--- License : Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 by Nikolaos 
---           Kavvadias
+-- License : Copyright (C) 2009-2020 by Nikolaos Kavvadias
 --           This program is free software. You can redistribute it and/or 
---           modify it under the terms of the GNU Lesser General Public License, 
---           either version 3 of the License, or (at your option) any later 
---           version. See COPYING.
---
+--           modify it under the terms of the Modified BSD license. See
+--           LICENSE.
 --------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
 use IEEE.numeric_bit.all;
 

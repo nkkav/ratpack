@@ -9,12 +9,10 @@
 --           simulation (via forced assert).
 --           0.0.0 (2010/05/14)
 --           Initial version.
--- License : Copyright (C) 2010, 2011, 2012, 2013, 2014 by Nikolaos Kavvadias 
+-- License : Copyright (C) 2010-2020 by Nikolaos Kavvadias
 --           This program is free software. You can redistribute it and/or 
---           modify it under the terms of the GNU Lesser General Public License, 
---           either version 3 of the License, or (at your option) any later 
---           version. See COPYING.
---
+--           modify it under the terms of the Modified BSD license. See
+--           LICENSE.
 --------------------------------------------------------------------------------
 
 library STD, IEEE;
@@ -33,7 +31,7 @@ architecture tb_arch of ratpack_tb is
   -- Declare results file
   -------------------------------------------------------
   file ResultsFile: text open write_mode is
-  "ratpack_results.txt";
+  "ratpack_results1.txt";
   -------------------------------------------------------
   -- Constant declarations
   -------------------------------------------------------
@@ -42,12 +40,13 @@ begin
 
   -- Test the basic operators. 
   TEST_OPS: process
-    variable a, b, c, d: rational := RAT_ZERO;
+    variable a, b, c, d, e: rational := RAT_ZERO;
     variable BufLine: line;
   begin
     a := to_rational(5, 12);
     b := to_rational(2, 3);
-    d := to_rational(-3, 4);
+    d := to_rational(3, 4);
+    e := to_rational(-3, 4);
     wait for CLK_PERIOD;
     -- Test rational addition
     c := a + b;    
@@ -125,12 +124,24 @@ begin
     write(Bufline, c(denom));
     writeline(ResultsFile, Bufline);
     wait for CLK_PERIOD;
-    -- Test abs
+    -- Test abs on positive (or zero)
     c := abs(d);
     write(Bufline, string'("abs("));    
     write(Bufline, d(numer));
     write(Bufline, string'("/"));
     write(Bufline, d(denom));
+    write(Bufline, string'(") = "));
+    write(Bufline, c(numer));
+    write(Bufline, string'("/"));
+    write(Bufline, c(denom));
+    writeline(ResultsFile, Bufline);
+    wait for CLK_PERIOD;
+    -- Test abs on negative
+    c := abs(e);
+    write(Bufline, string'("abs("));
+    write(Bufline, e(numer));
+    write(Bufline, string'("/"));
+    write(Bufline, e(denom));
     write(Bufline, string'(") = "));
     write(Bufline, c(numer));
     write(Bufline, string'("/"));
