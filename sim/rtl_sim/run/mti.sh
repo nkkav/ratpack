@@ -21,8 +21,8 @@ E_PRINTUSAGE=83
 
 function print_usage () {
   echo "Script for running a Mentor Modelsim (MTI) simulation."
-  echo "Author: Nikolaos Kavvadias (C) 2012, 2013, 2014"
-  echo "Copyright: (C) 2012, 2013, 2014 Nikolaos Kavvadias"
+  echo "Author: Nikolaos Kavvadias (C) 2012-2020"
+  echo "Copyright: (C) 2012-2020 Nikolaos Kavvadias"
   echo "Usage: ./mti.sh \$1 \$2"
   echo "where:"
   echo "  \$1: is the package or entity name to be tested (ratpack)."
